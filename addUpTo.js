@@ -6,4 +6,8 @@ function addUpto(n) {
     }
     return total;
 }
+
+function addUptoFormula(n) {
+    return n * (n + 1) / 2;
+}
 console.log(addUpto(5));
