@@ -6,13 +6,10 @@ function countUniqueValues(arr) {
     // pointer at first position
     // pointer at second position
     // initialize counter at 1 as long as there is something in arr
-    let counter;
-    if (arr.length) {
-        counter = 1;
-    } else {
+    if (!arr.length) {
         return 0;
     }
-
+    let counter = 1;
     for (let i = 0; i < arr.length - 1; i++) {
         if (arr[i] !== arr[i + 1]) {
             counter++;
