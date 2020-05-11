@@ -23,7 +23,6 @@ function maxSubarraySum(arr, num) {
         if (sum > maxSum) {
             maxSum = sum;
         }
-        console.log(`i: ${i}, sum: ${sum}, maxSum: ${maxSum}`);
     }
     return maxSum;
 }
