@@ -27,7 +27,7 @@ describe('SinglyLinkedList class tests', () => {
     });
 
     describe('Push method tests', () => {
-        test('Works with empty list', () => {
+        test('Works if list is empty', () => {
             const list = new SinglyLinkedList();
             list.push('a');
             expect(list.head instanceof Node).toEqual(true);
@@ -36,7 +36,7 @@ describe('SinglyLinkedList class tests', () => {
             expect(list.length).toEqual(1);
         });
 
-        test('Works with non-empty list', () => {
+        test('Works if list has items', () => {
             const list = new SinglyLinkedList();
             list.push('a');
             list.push('b');
@@ -55,7 +55,7 @@ describe('SinglyLinkedList class tests', () => {
     });
 
     describe('Pop method tests', () => {
-        test('If list is empty, returns undefined', () => {
+        test('Works if list is empty', () => {
             const list = new SinglyLinkedList();
             expect(list.pop()).toEqual(undefined);
         });
@@ -83,6 +83,50 @@ describe('SinglyLinkedList class tests', () => {
             expect(removed instanceof Node).toEqual(true);
             expect(removed.value).toEqual('c');
         });
-    })
+    });
+
+    describe('Shift method tests', () => {
+        test('Works if list is empty', () => {
+            const list = new SinglyLinkedList();
+            const removed = list.shift();
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
+            expect(list.length).toEqual(0);
+            expect(removed).toEqual(undefined);
+        });
+
+        test('Works if list has 1 item', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            const removed = list.shift();
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
+            expect(list.length).toEqual(0);
+            expect(removed.value).toEqual('a');
+        });
+
+        test('Works if list has 2 items', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            const removed = list.shift();
+            expect(list.head.value).toEqual('b');
+            expect(list.tail.value).toEqual('b');
+            expect(list.length).toEqual(1);
+            expect(removed.value).toEqual('a');
+        });
+
+        test('Works if list has 3 items', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            const removed = list.shift();
+            expect(list.head.value).toEqual('b');
+            expect(list.tail.value).toEqual('c');
+            expect(list.length).toEqual(2);
+            expect(removed.value).toEqual('a');
+        });
+    });
 
 });
