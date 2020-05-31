@@ -70,10 +70,12 @@ class SinglyLinkedList {
     }
 }
 
-const list = new SinglyLinkedList();
-list.push('a');
-list.push('b');
-list.push('c');
-// console.log(list.pop());
-list.shift();
-console.log(list);
+// const list = new SinglyLinkedList();
+// list.push('a');
+// list.push('b');
+// list.push('c');
+// // console.log(list.pop());
+// list.shift();
+// console.log(list);
+
+module.exports = [Node, SinglyLinkedList];

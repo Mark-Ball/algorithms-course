@@ -1,0 +1,23 @@
+{
+  "name": "ColtSteele",
+  "version": "1.0.0",
+  "description": "",
+  "main": "addUpTo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mark-Ball/algorithms-course.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mark-Ball/algorithms-course/issues"
+  },
+  "homepage": "https://github.com/Mark-Ball/algorithms-course#readme"
+}
