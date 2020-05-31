@@ -129,4 +129,50 @@ describe('SinglyLinkedList class tests', () => {
         });
     });
 
+    describe('Unshift method tests', () => {
+        test('Works if list is empty', () => {
+            const list = new SinglyLinkedList();
+            const returned = list.unshift('x');
+            expect(list.head.value).toEqual('x');
+            expect(list.tail.value).toEqual('x');
+            expect(list.length).toEqual(1);
+            expect(returned instanceof List).toEqual(true);
+            expect(returned.head.value).toEqual('x');
+            expect(returned.tail.value).toEqual('x');
+            expect(returned.length).toEqual(1);
+        });
+
+        test('Works if list has 1 item', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            const returned = list.unshift('x');
+            expect(list.head.value).toEqual('x');
+            expect(list.head.next.value).toEqual('a');
+            expect(list.tail.value).toEqual('a');
+            expect(list.length).toEqual(2);
+            expect(returned instanceof List).toEqual(true);
+            expect(returned.head.value).toEqual('x');
+            expect(returned.head.next.value).toEqual('a');
+            expect(returned.tail.value).toEqual('a');
+            expect(returned.length).toEqual(2);
+        });
+
+        test('Works if list has 2 items', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            const returned = list.unshift('x');
+            expect(list.head.value).toEqual('x');
+            expect(list.head.next.value).toEqual('a');
+            expect(list.head.next.next.value).toEqual('b');
+            expect(list.tail.value).toEqual('b');
+            expect(list.length).toEqual(3);
+            expect(returned instanceof List).toEqual(true);
+            expect(returned.head.value).toEqual('x');
+            expect(returned.head.next.value).toEqual('a');
+            expect(returned.tail.value).toEqual('b');
+            expect(returned.length).toEqual(3);
+        });
+    });
+
 });
