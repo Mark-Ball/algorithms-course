@@ -54,4 +54,35 @@ describe('SinglyLinkedList class tests', () => {
         })
     });
 
+    describe('Pop method tests', () => {
+        test('If list is empty, returns undefined', () => {
+            const list = new SinglyLinkedList();
+            expect(list.pop()).toEqual(undefined);
+        });
+
+        test('Works if list has 1 item', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            const removed = list.pop();
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
+            expect(list.length).toEqual(0);
+            expect(removed instanceof Node).toEqual(true);
+            expect(removed.value).toEqual('a');
+        });
+
+        test('Works if list has more than 1 item', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            const removed = list.pop();
+            expect(list.head.value).toEqual('a');
+            expect(list.tail.value).toEqual('b');
+            expect(list.length).toEqual(2);
+            expect(removed instanceof Node).toEqual(true);
+            expect(removed.value).toEqual('c');
+        });
+    })
+
 });
