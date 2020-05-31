@@ -24,10 +24,56 @@ class SinglyLinkedList {
         this.length++;
         return this;
     }
+
+    pop() {
+        if (!this.head) {
+            return;
+        }
+
+        
+        if (!this.head.next) {
+            const removed = this.head;
+            this.head = null;
+            this.tail = null;
+            this.length--;
+            return removed;
+        }
+
+        let pointer = this.head;
+        while (pointer.next.next) {
+            pointer = pointer.next;
+        }
+        const removed = this.tail;
+        pointer.next = null;
+        this.tail = pointer;
+        this.length--;
+        return removed;
+    }
+
+    shift() {
+        if (!this.head) {
+            return;
+        }
+
+        if (!this.head.next) {
+            const removed = this.head;
+            this.head = null;
+            this.tail = null;
+            this.length--;
+            return removed;
+        }
+
+        const removed = this.head;
+        this.head = this.head.next;
+        this.length--;
+        return removed;
+    }
 }
 
 const list = new SinglyLinkedList();
-console.log(list.push('a'));
-console.log(list.push('b'));
-console.log(list.head.next);
+list.push('a');
+list.push('b');
+list.push('c');
+// console.log(list.pop());
+list.shift();
 console.log(list);
