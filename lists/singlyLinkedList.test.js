@@ -218,5 +218,38 @@ describe('SinglyLinkedList class tests', () => {
         });
     });
 
+    describe('Set method tests', () => {
+        test('Works with index < 0', () => {
+            const list = new SinglyLinkedList();
+            const returned = list.set(-1, 'x');
+            expect(returned).toEqual(false);
+        });
+
+        test('Works with index >= length', () => {
+            const list = new SinglyLinkedList();
+            const returned = list.set(3, 'x');
+            expect(returned).toEqual(false);
+        });
+
+        test('Works if list has 1 item', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            const returned = list.set(0, 'b');
+            expect(list.head).toEqual('b');
+            expect(returned).toEqual(true);
+        });
+
+        test('Works if list has many items', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            list.push('d');
+            const returned = list.set(2, 'x');
+            expect(list.head.next.next).toEqual('x');
+            expect(returned).toEqual(true);
+        });
+    });
+
 
 });
