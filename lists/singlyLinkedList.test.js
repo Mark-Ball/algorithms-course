@@ -235,7 +235,7 @@ describe('SinglyLinkedList class tests', () => {
             const list = new SinglyLinkedList();
             list.push('a');
             const returned = list.set(0, 'b');
-            expect(list.head).toEqual('b');
+            expect(list.head.value).toEqual('b');
             expect(returned).toEqual(true);
         });
 
@@ -246,7 +246,7 @@ describe('SinglyLinkedList class tests', () => {
             list.push('c');
             list.push('d');
             const returned = list.set(2, 'x');
-            expect(list.head.next.next).toEqual('x');
+            expect(list.head.next.next.value).toEqual('x');
             expect(returned).toEqual(true);
         });
     });
