@@ -175,4 +175,48 @@ describe('SinglyLinkedList class tests', () => {
         });
     });
 
+    describe('Get method tests', () => {
+        test('Works if index is < 0', () => {
+            const list = new SinglyLinkedList();
+            const returned = list.get(-1);
+            expect(returned).toEqual(null);
+        });
+
+        test('Works if index is >= length', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            const returned = list.get(5);
+            expect(returned).toEqual(null);
+        });
+
+        test('Works if list is empty', () => {
+            const list = new SinglyLinkedList();
+            const returned = list.get(0);
+            expect(returned).toEqual(null);
+        });
+
+        test('Works if list has 1 item', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            const returned = list.get(0);
+            expect(returned instanceof Node).toEqual(true);
+            expect(returned.value).toEqual('a');
+            expect(returned.next).toEqual(null);
+        });
+
+        test('Works if list has 5 items', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            list.push('d');
+            list.push('e');
+            const returned = list.get(3);
+            expect(returned.value).toEqual('d');
+            expect(returned.next.value).toEqual('e');
+        });
+    });
+
+
 });
