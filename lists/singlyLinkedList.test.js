@@ -136,7 +136,7 @@ describe('SinglyLinkedList class tests', () => {
             expect(list.head.value).toEqual('x');
             expect(list.tail.value).toEqual('x');
             expect(list.length).toEqual(1);
-            expect(returned instanceof List).toEqual(true);
+            expect(returned instanceof SinglyLinkedList).toEqual(true);
             expect(returned.head.value).toEqual('x');
             expect(returned.tail.value).toEqual('x');
             expect(returned.length).toEqual(1);
@@ -150,7 +150,7 @@ describe('SinglyLinkedList class tests', () => {
             expect(list.head.next.value).toEqual('a');
             expect(list.tail.value).toEqual('a');
             expect(list.length).toEqual(2);
-            expect(returned instanceof List).toEqual(true);
+            expect(returned instanceof SinglyLinkedList).toEqual(true);
             expect(returned.head.value).toEqual('x');
             expect(returned.head.next.value).toEqual('a');
             expect(returned.tail.value).toEqual('a');
@@ -167,7 +167,7 @@ describe('SinglyLinkedList class tests', () => {
             expect(list.head.next.next.value).toEqual('b');
             expect(list.tail.value).toEqual('b');
             expect(list.length).toEqual(3);
-            expect(returned instanceof List).toEqual(true);
+            expect(returned instanceof SinglyLinkedList).toEqual(true);
             expect(returned.head.value).toEqual('x');
             expect(returned.head.next.value).toEqual('a');
             expect(returned.tail.value).toEqual('b');
