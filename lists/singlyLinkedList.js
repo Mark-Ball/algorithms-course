@@ -81,6 +81,17 @@ class SinglyLinkedList {
         this.length++;
         return this;
     }
+
+    get(n) {
+        if (n < 0 || n >= this.length) {
+            return null;
+        }
+        let node = this.head;
+        for (let i = 0; i < n; i++) {
+            node = node.next;
+        }
+        return node;
+    }
 }
 
 module.exports = [Node, SinglyLinkedList];
