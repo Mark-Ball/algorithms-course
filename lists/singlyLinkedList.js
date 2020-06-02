@@ -103,7 +103,21 @@ class SinglyLinkedList {
     }
 
     insert(index, value) {
-        // inserts new node at position specified by index
+        if (index < 0 || index > this.length) {
+            return false;
+        }
+        if (index === 0) {
+            this.unshift(value);
+        } else if (index === this.length) {
+            this.push(value);
+        } else {
+            const node = new Node(value);
+            const previousNode = this.get(index - 1);
+            node.next = previousNode.next
+            previousNode.next = node;
+            this.length++;
+        }
+        return true;
     }
 }
 

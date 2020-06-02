@@ -256,18 +256,17 @@ describe('SinglyLinkedList class tests', () => {
             const list = new SinglyLinkedList();
             const returned = list.insert(-1, 'a');
             expect(returned).toEqual(false);
-            expect(list.head.value).toEqual(null);
-            expect(list.tail.value).toEqual(null);
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
             expect(list.length).toEqual(0);
         });
         
         test('Works with index > length', () => {
             const list = new SinglyLinkedList();
-            list.push('a');
             const returned = list.insert(3, 'b');
             expect(returned).toEqual(false);
-            expect(list.head.value).toEqual(null);
-            expect(list.tail.value).toEqual(null);
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
             expect(list.length).toEqual(0);
         });
 
@@ -294,7 +293,7 @@ describe('SinglyLinkedList class tests', () => {
             expect(list.length).toEqual(3);
         });
 
-        test('Works with intermediate index', () => {
+        test('Works with intermediate index (1 of 2)', () => {
             const list = new SinglyLinkedList();
             list.push('a');
             list.push('b');
@@ -309,6 +308,19 @@ describe('SinglyLinkedList class tests', () => {
             expect(list.head.next.next.next.next.value).toEqual('d');
             expect(list.tail.value).toEqual('d');
             expect(list.length).toEqual(5);
+        });
+
+        test('Works with intermediate index (2 of 2)', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            const returned = list.insert(1, 'x');
+            expect(returned).toEqual(true);
+            expect(list.head.value).toEqual('a');
+            expect(list.head.next.value).toEqual('x');
+            expect(list.head.next.next.value).toEqual('b');
+            expect(list.tail.value).toEqual('b');
+            expect(list.length).toEqual(3);
         });
 
     });
