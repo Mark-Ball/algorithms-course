@@ -139,6 +139,10 @@ class SinglyLinkedList {
         this.length--;
         return removed;
     }
+
+    reverse() {
+        // reverse the list in place i.e. without creating a second list
+    }
 }
 
 module.exports = [Node, SinglyLinkedList];

@@ -398,7 +398,70 @@ describe('SinglyLinkedList class tests', () => {
             expect(list.tail.value).toEqual('e');
             expect(list.length).toEqual(4);
         });
-
     });
+
+    describe('Reverse method tests', () => {
+        test('Works if list is empty', () => {
+            const list = new SinglyLinkedList();
+            const returned = list.reverse();
+            expect(returned instanceof SinglyLinkedList).toEqual(true);
+            expect(returned.head).toEqual(null);
+            expect(returned.tail).toEqual(null);
+            expect(returned.length).toEqual(0);
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
+            expect(list.length).toEqual(0);
+        });
+
+        test('Works if list has 1 element', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            const returned = list.reverse();
+            expect(returned instanceof SinglyLinkedList).toEqual(true);
+            expect(returned.head.value).toEqual('a');
+            expect(returned.tail.value).toEqual('a');
+            expect(returned.length).toEqual(1);
+            expect(list.head.value).toEqual('a');
+            expect(list.tail.value).toEqual('a');
+            expect(list.length).toEqual(1);
+        });
+
+        test('Works if list has 2 elements', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            const returned = list.reverse();
+            expect(returned instanceof SinglyLinkedList).toEqual(true);
+            expect(returned.head.value).toEqual('b');
+            expect(returned.tail.value).toEqual('a');
+            expect(returned.length).toEqual(2);
+            expect(list.head.value).toEqual('b');
+            expect(list.tail.value).toEqual('a');
+            expect(list.length).toEqual(2);
+        });
+
+        test('Works if list has 5 elements', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            list.push('d');
+            list.push('e');
+            const returned = list.reverse();
+            expect(returned instanceof SinglyLinkedList).toEqual(true);
+            expect(returned.head.value).toEqual('e');
+            expect(returned.head.next.value).toEqual('d');
+            expect(returned.head.next.next.value).toEqual('c');
+            expect(returned.head.next.next.next.value).toEqual('b');
+            expect(returned.tail.value).toEqual('a');
+            expect(returned.length).toEqual(5);
+            expect(list.head.value).toEqual('e');
+            expect(list.head.next.value).toEqual('d');
+            expect(list.head.next.next.value).toEqual('c');
+            expect(list.head.next.next.next.value).toEqual('b');
+            expect(list.tail.value).toEqual('a');
+            expect(list.length).toEqual(5);
+        });
+    })
 
 });
