@@ -251,5 +251,66 @@ describe('SinglyLinkedList class tests', () => {
         });
     });
 
+    describe('Insert method tests', () => {
+        test('Works with index < 0', () => {
+            const list = new SinglyLinkedList();
+            const returned = list.insert(-1, 'a');
+            expect(returned).toEqual(false);
+            expect(list.head.value).toEqual(null);
+            expect(list.tail.value).toEqual(null);
+            expect(list.length).toEqual(0);
+        });
+        
+        test('Works with index > length', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            const returned = list.insert(3, 'b');
+            expect(returned).toEqual(false);
+            expect(list.head.value).toEqual(null);
+            expect(list.tail.value).toEqual(null);
+            expect(list.length).toEqual(0);
+        });
+
+        test('Works with index 0', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            const returned = list.insert(0, 'b');
+            expect(returned).toEqual(true);
+            expect(list.head.value).toEqual('b');
+            expect(list.head.next.value).toEqual('a');
+            expect(list.tail.value).toEqual('a');
+            expect(list.length).toEqual(2);
+        });
+
+        test('Works with index = length', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            const returned = list.insert(2, 'c');
+            expect(returned).toEqual(true);
+            expect(list.head.value).toEqual('a');
+            expect(list.head.next.value).toEqual('b');
+            expect(list.tail.value).toEqual('c');
+            expect(list.length).toEqual(3);
+        });
+
+        test('Works with intermediate index', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            list.push('d');
+            const returned = list.insert(3, 'x');
+            expect(returned).toEqual(true);
+            expect(list.head.value).toEqual('a');
+            expect(list.head.next.value).toEqual('b');
+            expect(list.head.next.next.value).toEqual('c');
+            expect(list.head.next.next.next.value).toEqual('x');
+            expect(list.head.next.next.next.next.value).toEqual('d');
+            expect(list.tail.value).toEqual('d');
+            expect(list.length).toEqual(5);
+        });
+
+    });
 
 });

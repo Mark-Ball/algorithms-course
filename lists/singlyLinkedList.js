@@ -101,6 +101,10 @@ class SinglyLinkedList {
         }
         return false;
     }
+
+    insert(index, value) {
+        // inserts new node at position specified by index
+    }
 }
 
 module.exports = [Node, SinglyLinkedList];
