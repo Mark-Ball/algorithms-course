@@ -322,6 +322,82 @@ describe('SinglyLinkedList class tests', () => {
             expect(list.tail.value).toEqual('b');
             expect(list.length).toEqual(3);
         });
+    });
+
+    describe('Remove method tests', () => {
+        test('Works if index < 0', () => {
+            const list = new SinglyLinkedList();
+            const returned = list.remove(-1);
+            expect(returned).toEqual(undefined);
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
+            expect(list.length).toEqual(0);
+        });
+        
+        test('Works if index > length', () => {
+            const list = new SinglyLinkedList();
+            const returned = list.remove(5);
+            expect(returned).toEqual(undefined);
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
+            expect(list.length).toEqual(0);
+        });
+
+        test('Works if index = 0', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            const returned = list.remove(0);
+            expect(returned instanceof Node).toEqual(true);
+            expect(list.head.value).toEqual('b');
+            expect(list.tail.value).toEqual('b');
+            expect(list.length).toEqual(1);
+        });
+
+        test('Works if index = length - 1', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            const returned = list.remove(1);
+            expect(returned instanceof Node).toEqual(true);
+            expect(returned.value).toEqual('b');
+            expect(list.head.value).toEqual('a');
+            expect(list.head.next).toEqual(null);
+            expect(list.tail.value).toEqual('a');
+            expect(list.length).toEqual(1);
+        });
+
+        test('Works if index is intermediate (1 of 2)', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            const returned = list.remove(1);
+            expect(returned instanceof Node).toEqual(true);
+            expect(returned.value).toEqual('b');
+            expect(list.head.value).toEqual('a');
+            expect(list.head.next.value).toEqual('c');
+            expect(list.tail.value).toEqual('c');
+            expect(list.length).toEqual(2);
+        });
+
+        test('Works if index is intermediate (2 of 2)', () => {
+            const list = new SinglyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            list.push('d');
+            list.push('e');
+            const returned = list.remove(3);
+            expect(returned instanceof Node).toEqual(true);
+            expect(returned.value).toEqual('d');
+            expect(list.head.value).toEqual('a');
+            expect(list.head.next.value).toEqual('b');
+            expect(list.head.next.next.value).toEqual('c');
+            expect(list.head.next.next.next.value).toEqual('e');
+            expect(list.tail.value).toEqual('e');
+            expect(list.length).toEqual(4);
+        });
 
     });
 
