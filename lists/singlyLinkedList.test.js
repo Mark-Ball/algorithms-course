@@ -462,6 +462,5 @@ describe('SinglyLinkedList class tests', () => {
             expect(list.tail.value).toEqual('a');
             expect(list.length).toEqual(5);
         });
-    })
-
+    });
 });

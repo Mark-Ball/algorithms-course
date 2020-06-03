@@ -141,7 +141,24 @@ class SinglyLinkedList {
     }
 
     reverse() {
-        // reverse the list in place i.e. without creating a second list
+        if (!this.head || !this.head.next) {
+            return this;
+        }
+        let p1 = null;
+        let p2 = this.head;
+        let p3 = null;
+
+        // swap head and tail
+        this.head = this.tail;
+        this.tail = p2;
+
+        for (let i = 0; i < this.length; i++) {
+            p3 = p2.next;
+            p2.next = p1;
+            p1 = p2;
+            p2 = p3;
+        }
+        return this;
     }
 }
 
