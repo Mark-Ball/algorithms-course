@@ -60,4 +60,37 @@ describe('DoublyLinkedList tests', () => {
             expect(list.length).toEqual(2);
         })
     })
+
+    describe('Pop method tests', () => {
+        test('Works on an empty list', () => {
+            const list = new DoublyLinkedList();
+            list.pop();
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
+            expect(list.length).toEqual(0);
+        })
+        
+        test('Works on a list with 1 element', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            list.pop();
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
+            expect(list.length).toEqual(0);
+        })
+
+        test('Works on a list with multiple elements', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.pop();
+            expect(list.head.data).toEqual('a');
+            expect(list.head.prev).toEqual(null);
+            expect(list.head.next).toEqual(null);
+            expect(list.tail.data).toEqual('a');
+            expect(list.tail.prev).toEqual(null);
+            expect(list.tail.next).toEqual(null);
+            expect(list.length).toEqual(1);
+        })
+    })
 })
