@@ -33,4 +33,31 @@ describe('DoublyLinkedList tests', () => {
             expect(list.length).toEqual(0);
         })
     })
+
+    describe('Push method tests', () => {
+        test('Works if list is empty', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            expect(list.head.data).toEqual('a');
+            expect(list.head.next).toEqual(null);
+            expect(list.head.prev).toEqual(null);
+            expect(list.tail.data).toEqual('a');
+            expect(list.tail.next).toEqual(null);
+            expect(list.tail.prev).toEqual(null);
+            expect(list.length).toEqual(1);
+        })
+
+        test('Works if list has an item in it', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            list.push('b');
+            expect(list.head.data).toEqual('a');
+            expect(list.head.next.data).toEqual('b');
+            expect(list.head.prev).toEqual(null);
+            expect(list.tail.data).toEqual('b');
+            expect(list.tail.prev.data).toEqual('a');
+            expect(list.tail.next).toEqual(null);
+            expect(list.length).toEqual(2);
+        })
+    })
 })
