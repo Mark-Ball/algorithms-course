@@ -64,7 +64,8 @@ describe('DoublyLinkedList tests', () => {
     describe('Pop method tests', () => {
         test('Works on an empty list', () => {
             const list = new DoublyLinkedList();
-            list.pop();
+            const returned = list.pop();
+            expect(returned).toEqual(undefined);
             expect(list.head).toEqual(null);
             expect(list.tail).toEqual(null);
             expect(list.length).toEqual(0);
@@ -73,7 +74,11 @@ describe('DoublyLinkedList tests', () => {
         test('Works on a list with 1 element', () => {
             const list = new DoublyLinkedList();
             list.push('a');
-            list.pop();
+            const returned = list.pop();
+            expect(returned instanceof Node).toEqual(true);
+            expect(returned.data).toEqual('a');
+            expect(returned.prev).toEqual(null);
+            expect(returned.next).toEqual(null);
             expect(list.head).toEqual(null);
             expect(list.tail).toEqual(null);
             expect(list.length).toEqual(0);
@@ -83,14 +88,19 @@ describe('DoublyLinkedList tests', () => {
             const list = new DoublyLinkedList();
             list.push('a');
             list.push('b');
-            list.pop();
+            list.push('c');
+            const returned = list.pop();
+            expect(returned instanceof Node).toEqual(true);
+            expect(returned.data).toEqual('c');
+            expect(returned.prev).toEqual(null);
+            expect(returned.next).toEqual(null);
             expect(list.head.data).toEqual('a');
             expect(list.head.prev).toEqual(null);
-            expect(list.head.next).toEqual(null);
-            expect(list.tail.data).toEqual('a');
-            expect(list.tail.prev).toEqual(null);
+            expect(list.head.next.data).toEqual('b');
+            expect(list.tail.data).toEqual('b');
+            expect(list.tail.prev.data).toEqual('a');
             expect(list.tail.next).toEqual(null);
-            expect(list.length).toEqual(1);
+            expect(list.length).toEqual(2);
         })
     })
 })
