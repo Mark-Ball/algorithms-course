@@ -28,7 +28,6 @@ class DoublyLinkedList {
     }
 
     pop() {
-        // remove last item and return it
         if (!this.head) {
             return undefined;
         }
