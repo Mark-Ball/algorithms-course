@@ -146,4 +146,65 @@ describe('DoublyLinkedList tests', () => {
             expect(list.length).toEqual(2);
         });
     });
+
+    describe('Unshift method tests', () => {
+        test('Works on an empty list', () => {
+            const list = new DoublyLinkedList();
+            const returned = list.unshift('a');
+            expect(returned instanceof DoublyLinkedList).toEqual(true);
+            expect(returned.head.data).toEqual('a');
+            expect(returned.head.prev).toEqual(null);
+            expect(returned.head.next).toEqual(null);
+            expect(returned.tail.data).toEqual('a');
+            expect(returned.tail.prev).toEqual(null);
+            expect(returned.tail.next).toEqual(null);
+            expect(returned.length).toEqual(1);
+            expect(list.head.data).toEqual('a');
+            expect(list.head.prev).toEqual(null);
+            expect(list.head.next).toEqual(null);
+            expect(list.tail.data).toEqual('a');
+            expect(list.tail.prev).toEqual(null);
+            expect(list.tail.next).toEqual(null);
+            expect(list.length).toEqual(1);
+        });
+
+        test('Works on a list with 1 element', () => {
+            const list = new DoublyLinkedList();
+            list.push('b');
+            const returned = list.unshift('a');
+            expect(returned instanceof DoublyLinkedList).toEqual(true);
+            expect(returned.head.data).toEqual('a');
+            expect(returned.head.prev).toEqual(null);
+            expect(returned.head.next.data).toEqual('b');
+            expect(returned.tail.data).toEqual('b');
+            expect(returned.tail.prev.data).toEqual('a');
+            expect(returned.tail.next).toEqual(null);
+            expect(returned.length).toEqual(2);
+            expect(list.head.data).toEqual('a');
+            expect(list.head.prev).toEqual(null);
+            expect(list.head.next.data).toEqual('b');
+            expect(list.tail.data).toEqual('b');
+            expect(list.tail.prev.data).toEqual('a');
+            expect(list.tail.next).toEqual(null);
+            expect(list.length).toEqual(2);
+        });
+
+        test('Works on a list with multiple elements', () => {
+            const list = new DoublyLinkedList();
+            list.push('b');
+            list.push('c');
+            const returned = list.unshift('a');
+            expect(returned instanceof DoublyLinkedList).toEqual(true);
+            expect(returned.head.data).toEqual('a');
+            expect(returned.head.next.data).toEqual('b');
+            expect(returned.head.next.next.data).toEqual('c');
+            expect(returned.tail.data).toEqual('c');
+            expect(returned.length).toEqual(3);
+            expect(list.head.data).toEqual('a');
+            expect(list.head.next.data).toEqual('b');
+            expect(list.head.next.next.data).toEqual('c');
+            expect(list.tail.data).toEqual('c');
+            expect(list.length).toEqual(3);
+        });
+    })
 });

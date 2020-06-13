@@ -62,6 +62,19 @@ class DoublyLinkedList {
         this.length--;
         return head;
     }
+
+    unshift(data) {
+        const node = new Node(data);
+        if (!this.head) {
+            this.tail = node;
+        } else {
+            this.head.prev = node;
+            node.next = this.head;
+        }
+        this.head = node;
+        this.length++;
+        return this;
+    }
 }
 
 module.exports = [Node, DoublyLinkedList];
