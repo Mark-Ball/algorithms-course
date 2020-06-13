@@ -206,5 +206,60 @@ describe('DoublyLinkedList tests', () => {
             expect(list.tail.data).toEqual('c');
             expect(list.length).toEqual(3);
         });
-    })
+    });
+
+    describe('Get method tests', () => {
+        test('Works on an empty list', () => {
+            const list = new DoublyLinkedList();
+            const returned = list.get(1);
+            expect(returned).toEqual(null);
+        });
+
+        test('Works if the index < 0', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            const returned = list.get(-1);
+            expect(returned).toEqual(null);
+        });
+
+        test('Works if the index >= length', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            const returned = list.get(2);
+            expect(returned).toEqual(null);
+        });
+
+        test('Retrieves a node in the first half of the list', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            list.push('d');
+            list.push('e');
+            const returned = list.get(1);
+            expect(returned.data).toEqual('b');
+        });
+
+        test('Retrieves the middle node', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            list.push('d');
+            list.push('e');
+            const returned = list.get(2);
+            expect(returned.data).toEqual('c');
+        });
+
+        test('Retrieves a node in the second half of the list', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            list.push('d');
+            list.push('e');
+            const returned = list.get(4);
+            expect(returned.data).toEqual('e');
+        });
+    });
 });
