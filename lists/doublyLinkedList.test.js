@@ -339,6 +339,7 @@ describe('DoublyLinkedList tests', () => {
             expect(list.tail.data).toEqual('a');
             expect(list.tail.prev).toEqual(null);
             expect(list.tail.next).toEqual(null);
+            expect(list.length).toEqual(1);
         });
 
         test('Works if inserting at the tail', () => {
@@ -351,6 +352,7 @@ describe('DoublyLinkedList tests', () => {
             expect(list.head.next.data).toEqual('b');
             expect(list.head.next.next.data).toEqual('c');
             expect(list.tail.data).toEqual('c');
+            expect(list.length).toEqual(3);
         });
 
         test('Works if inserting in the middle', () => {
@@ -365,6 +367,7 @@ describe('DoublyLinkedList tests', () => {
             expect(list.head.next.next.data).toEqual('c');
             expect(list.head.next.next.next.data).toEqual('d');
             expect(list.tail.data).toEqual('d');
+            expect(list.length).toEqual(4);
         });
     });
 });
