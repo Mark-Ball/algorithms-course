@@ -262,4 +262,53 @@ describe('DoublyLinkedList tests', () => {
             expect(returned.data).toEqual('e');
         });
     });
+
+    describe('Set method tests', () => {
+        test('Works on an empty list', () => {
+            const list = new DoublyLinkedList();
+            const returned = list.set(0, 'x');
+            expect(returned).toEqual(false);
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
+        });
+
+        test('Works if the index is < 0', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            const returned = list.set(-1, 'x');
+            expect(returned).toEqual(false);
+            expect(list.head.data).toEqual('a');
+            expect(list.tail.data).toEqual('a');
+        });
+
+        test('Works if the index is >= length', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            const returned = list.set(2, 'x');
+            expect(returned).toEqual(false);
+            expect(list.head.data).toEqual('a');
+            expect(list.tail.data).toEqual('a');
+        });
+
+        test('Works if list has 1 item', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            const returned = list.set(0, 'x');
+            expect(returned).toEqual(true);
+            expect(list.head.data).toEqual('x');
+            expect(list.tail.data).toEqual('x');
+        });
+
+        test('Works if list has multiple items', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            list.push('b');
+            list.push('c');
+            const returned = list.set(1, 'x');
+            expect(returned).toEqual(true);
+            expect(list.head.data).toEqual('a');
+            expect(list.head.next.data).toEqual('x');
+            expect(list.head.next.next.data).toEqual('c');
+        });
+    });
 });

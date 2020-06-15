@@ -95,6 +95,15 @@ class DoublyLinkedList {
         }
         return node;
     }
+
+    set(index, data) {
+        const node = this.get(index);
+        if (!node) {
+            return false;
+        }
+        node.data = data;
+        return true;
+    }
 }
 
 module.exports = [Node, DoublyLinkedList];
