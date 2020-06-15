@@ -370,4 +370,53 @@ describe('DoublyLinkedList tests', () => {
             expect(list.length).toEqual(4);
         });
     });
+
+    describe('Remove method tests', () => {
+        test('Works if index < 0', () => {
+            const list = new DoublyLinkedList();
+            const returned = list.remove(-2);
+            expect(returned).toEqual(false);
+        });
+
+        test('Works if index > length', () => {
+            const list = new DoublyLinkedList();
+            const returned = list.remove(2);
+            expect(returned).toEqual(false);
+        });
+
+        test('Removes first element', () => {
+            const list = new DoublyLinkedList();
+            list.push('a').push('b').push('c');
+            const returned = list.remove(0);
+            expect(returned.data).toEqual('a');
+            expect(returned.prev).toEqual(null);
+            expect(returned.next).toEqual(null);
+            expect(list.head.data).toEqual('b');
+            expect(list.tail.data).toEqual('c');
+            expect(list.length).toEqual(2);
+        });
+        test('Removes last element', () => {
+            const list = new DoublyLinkedList();
+            list.push('a').push('b').push('c');
+            const returned = list.remove(2);
+            expect(returned.data).toEqual('c');
+            expect(returned.prev).toEqual(null);
+            expect(returned.next).toEqual(null);
+            expect(list.head.data).toEqual('a');
+            expect(list.tail.data).toEqual('b');
+            expect(list.length).toEqual(2);
+        });
+
+        test('Removes middle element', () => {
+            const list = new DoublyLinkedList();
+            list.push('a').push('b').push('c');
+            const returned = list.remove(1);
+            expect(returned.data).toEqual('b');
+            expect(returned.prev).toEqual(null);
+            expect(returned.next).toEqual(null);
+            expect(list.head.data).toEqual('a');
+            expect(list.tail.data).toEqual('c');
+            expect(list.length).toEqual(2);
+        });
+    });
 });
