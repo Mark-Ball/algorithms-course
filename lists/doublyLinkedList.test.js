@@ -311,4 +311,60 @@ describe('DoublyLinkedList tests', () => {
             expect(list.head.next.next.data).toEqual('c');
         });
     });
+
+    describe('Insert method tests', () => {
+        test('Works if index < 0', () => {
+            const list = new DoublyLinkedList();
+            const returned = list.insert(-1, 'a');
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
+            expect(returned).toEqual(false);
+        });
+
+        test('Works if index >= length', () => {
+            const list = new DoublyLinkedList();
+            const returned = list.insert(3, 'a');
+            expect(list.head).toEqual(null);
+            expect(list.tail).toEqual(null);
+            expect(returned).toEqual(false);
+        });
+
+        test('Works if inserting at the head', () => {
+            const list = new DoublyLinkedList();
+            const returned = list.insert(0, 'a');
+            expect(returned).toEqual(true);
+            expect(list.head.data).toEqual('a');
+            expect(list.head.prev).toEqual(null);
+            expect(list.head.next).toEqual(null);
+            expect(list.tail.data).toEqual('a');
+            expect(list.tail.prev).toEqual(null);
+            expect(list.tail.next).toEqual(null);
+        });
+
+        test('Works if inserting at the tail', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            list.push('b');
+            const returned = list.insert(2, 'c');
+            expect(returned).toEqual(true);
+            expect(list.head.data).toEqual('a');
+            expect(list.head.next.data).toEqual('b');
+            expect(list.head.next.next.data).toEqual('c');
+            expect(list.tail.data).toEqual('c');
+        });
+
+        test('Works if inserting in the middle', () => {
+            const list = new DoublyLinkedList();
+            list.push('a');
+            list.push('c');
+            list.push('d');
+            const returned = list.insert(1, 'b');
+            expect(returned).toEqual(true);
+            expect(list.head.data).toEqual('a');
+            expect(list.head.next.data).toEqual('b');
+            expect(list.head.next.next.data).toEqual('c');
+            expect(list.head.next.next.next.data).toEqual('d');
+            expect(list.tail.data).toEqual('d');
+        });
+    });
 });
